@@ -21,18 +21,18 @@ export const TasksLists = () => {
   const handleDrag = (result: DropResult) => {
     const { destination, draggableId } = result;
 
-    if(destination){
+    if (destination) {
       const changedTask: ITaskFormValue[] = tasksArray.map((value) => {
         if (value.taskName === draggableId) {
           return {
             ...value,
             currentStatus: destination?.droppableId || value.currentStatus,
           };
-        }else{
-          return value
+        } else {
+          return value;
         }
       });
-  
+
       if (changedTask !== undefined) {
         setTasksArray(changedTask);
       }

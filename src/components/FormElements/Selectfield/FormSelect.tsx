@@ -5,10 +5,11 @@ import { useSelectOptions } from "./useSelectOptions";
 export const FormSelect = ({
   label,
   options,
+  placeholder,
   ...props
 }: IFormSelectInputProps) => {
   const [field, meta] = useField(props);
-  const formOptions = useSelectOptions(options);
+  const formOptions = useSelectOptions(options,placeholder);
   return (
     <>
       <label>

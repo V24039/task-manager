@@ -1,13 +1,16 @@
 import * as Yup from "yup";
 import { ISelectOptionsProps } from "../../components/FormElements/Selectfield/types";
+import moment from "moment";
 
 export const taskDetailsInitialValue = {
   taskName: "",
   exceptedCompletion: "",
   priority: "",
   taskDescription: "",
-  currentStatus: ""
+  currentStatus: "",
 };
+
+const todayDate = new Date();
 
 export const taskDetailSchema = Yup.object().shape({
   taskName: Yup.string()
@@ -15,13 +18,18 @@ export const taskDetailSchema = Yup.object().shape({
       50,
       "Task Name exceds the maximum length of 50, please shorten the name"
     )
-    .required("Required"),
-  exceptedCompletion: Yup.date().required("Required"),
-  priority: Yup.string(),
+    .label("Name")
+    .required(),
+  exceptedCompletion: Yup.date()
+    .label("Excepted Date of Completion")
+    .min(moment(todayDate).add(-1, "day"), "The date cannot be in past.")
+    .required(),
+  priority: Yup.string().label("Priority").required(),
   taskDescription: Yup.string()
+    .required()
     .min(20, "Task description should of atleast 20 character")
     .max(500, "Task description cannot exceed 200 character"),
-  currentStatus: Yup.string()
+  currentStatus: Yup.string().label("Current Status").required(),
 });
 
 export const priorityOptions: ISelectOptionsProps = [

@@ -6,34 +6,35 @@ const TaskForm = () => {
   const { handleSubmit } = useFormikContext();
   return (
     <Form>
+      <p className="form_instruction">*Indicates required field</p>
       <FormInput
-        label={"Name:"}
-        name={"taskName"}
-        type={"text"}
-        placeholder={""}
+        label="*Name:"
+        name="taskName"
+        type="text"
+        placeholder="Please enter the name of the task"
       />
       <FormInput
-        label={"Excepted date of completion:"}
-        name={"exceptedCompletion"}
-        type={"date"}
-        placeholder={""}
+        label="*Excepted date of completion:"
+        name="exceptedCompletion"
+        type="date"
+        placeholder="Please choose the excepted date"
       />
       <FormInput
-        label={"Description:"}
-        name={"taskDescription"}
-        type={"text"}
-        placeholder={""}
+        label="Description:"
+        name="taskDescription"
+        type="text"
+        placeholder="Please enter the task description"
       />
       <FormSelect
-        label="Status"
+        label="*Status"
         name="currentStatus"
-        placeholder=""
+        placeholder="Please choose the current task status from the dropdown"
         options={currentStatusOptions}
       />
       <FormSelect
-        label="Priority"
+        label="*Priority"
         name="priority"
-        placeholder=""
+        placeholder="Please choose task priority level from the dropdown"
         options={priorityOptions}
       />
       <button type="submit" onSubmit={() => handleSubmit}>
